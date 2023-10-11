@@ -45,7 +45,7 @@ const fetchData = async () => {
   try {
     // Fetch a resource from the network. It returns a Promise
     // that resolves to the Response to that Request, whether it is successful or not.
-    const num=prompt("1: Busca un tipo 2: Busca un pokemon");
+    const num=prompt("1: Busca un tipo 2: Busca un pokemon"); 
     console.log("La opcion es la ",num);
     if(num==="1"){
       const tipo=prompt("Dime el tipo que quieres buscar");

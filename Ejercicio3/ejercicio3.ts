@@ -18,17 +18,17 @@ type libro={                                                                    
     genre:string;
 }
 
-    
-const filtro_genero=(biblioteca:libro[],genre:string)=>{                                                                          //Creamos una funcion que nos filtre por genero
+//No me funciona el filtrar por genero
+const filtro_genero=(biblioteca:libro[],genre:string)=>{                                                                                                                                                                      
     biblioteca.forEach((libro:libro)=>{
-        if(libro.genre===genre){                                                                                                   //Si el genero del libro es igual al genero que hemos introducido por teclado, nos imprime el titulo del libro
+        if(genre===libro.genre){                                                                                                   //Si el genero del libro es igual al genero que hemos introducido por teclado, nos imprime el titulo del libro
             console.log(libro.title);
         }
     });
 }
 
 const Menu=()=>{
-    const biblioteca:libro[]=[];                                                                                                      //Creamos un array de libros
+    const biblioteca:libro[]=[];                                                                                                      //Creamos un array de libros para guardar los libros que creemos
     let rep:boolean=true;
     let cond:boolean=true;
     let opcion:number=0;
@@ -55,21 +55,25 @@ const Menu=()=>{
                         const paginas=Number(prompt("Dime las paginas del libro"));
                         const genero=prompt("Dime el genero del libro");
                         const newlibro: libro={id,titulo,autor,paginas,genero};
-                        biblioteca.push(newlibro);                                                                                          //Añadimos el libro al array de libros que hemos creado anteoriormente
+                        biblioteca.push(newlibro);                                          //Añadimos el libro al array
+                        console.log("Hemos creado el libro")                                                                                        
                         break;
                     case 2:
                         //Filtramos por genero 
                         const genero_busque = prompt("Dime el genero del libro que queremos buscar");
                         if (genero_busque !== null) {
-                            filtro_genero(biblioteca, genero_busque); 
+                            const f=filtro_genero(biblioteca, genero_busque);
+                            console.log(f);
                         } else {
                             console.log("No se ingresa un genero correcto");
                         }
                         break;
                     case 3:
-                        console.log("Hemos eliminado este libro",biblioteca.pop())                                                                                                   //Borramos el ultimo libro que hemos creado
+                        //Borramos el ultimo libro creado
+                        console.log("Hemos eliminado este libro",biblioteca.pop())                                                                                                   
                         break;
                     case 4:
+                        //Salimos del programa
                         rep=false;
                         console.log("Saliste del programa");
                         break;
@@ -79,4 +83,3 @@ const Menu=()=>{
 
 }
 Menu();
-
